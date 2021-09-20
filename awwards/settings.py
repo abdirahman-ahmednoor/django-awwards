@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'myawwards',
     'pyuploadcare.dj',
     'bootstrap4',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
