@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myawwards',
     'bootstrap4',
-    'cloudinary'
+    'cloudinary',
+    'rest_framework',
 ]
 UPLOADCARE = {
     'pub_key': 'a06a67159cdc7dd16dd6',
