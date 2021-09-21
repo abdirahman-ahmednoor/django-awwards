@@ -1,6 +1,8 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views 
+from django.conf import settings
+from django.conf.urls.static import static
 
 # from rest_framework.authtoken.views import obtain_auth_token
 
@@ -16,9 +18,10 @@ urlpatterns = [
     # path('api/projects/',app_views.ProjectList.as_view()),
     # path('api/profiles/',app_views.ProfileList.as_view()),
     # path('api_token/', obtain_auth_token),
-    path(r'^search/$',views.search,name='search'),
-    # re_path(r'^users/(?P<pk>\d+)$',app_views.users_profile,name='users_profile'),
-    # re_path(r'^delete/(?P<project_id>\d+)$',app_views.delete,name='delete'),
+    path('search/$',views.search,name='search'),
+    path('users/(?P<pk>\d+)',views.users_profile,name='users_profile'),
+    path('delete/(?P<project_id>\d+)',views.delete,name='delete'),
 ]
-# if settings.DEBUG:
-#     urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

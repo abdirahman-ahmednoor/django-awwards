@@ -149,7 +149,7 @@ def post_project(request):
       new_post = post_form.save(commit = False)
       new_post.user = request.user
       new_post.save()
-      return redirect('home')
+      return redirect('index')
 
   else:
     post_form = PostProjectForm()
