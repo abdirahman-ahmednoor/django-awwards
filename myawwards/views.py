@@ -15,7 +15,7 @@ from rest_framework.views import APIView
 from .models import  Project,Profile,Rate
 from .serializer import ProfileSerializer,ProjectSerializer
 from rest_framework import status
-# from rest_framework import viewsets
+from rest_framework import viewsets
 
 
 

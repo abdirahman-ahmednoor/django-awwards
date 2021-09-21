@@ -3,6 +3,7 @@ from django.contrib.auth import views as auth_views
 from . import views 
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.authtoken.views import obtain_auth_token
 
 # from rest_framework.authtoken.views import obtain_auth_token
 
@@ -16,8 +17,8 @@ urlpatterns = [
     path('post/',views.post_project,name='post'),
     path('project/<int:project_id>',views.detail,  name='project.detail'),
     path('api/projects/',views.ProjectList.as_view()),
-    # path('api/profiles/',views.ProfileList.as_view()),
-    # path('api_token/', obtain_auth_token),
+    path('api/profiles/',views.ProfileList.as_view()),
+    path('api-token-auth/', obtain_auth_token),
     path('search/$',views.search,name='search'),
     path('users/(?P<pk>\d+)',views.users_profile,name='users_profile'),
     path('delete/(?P<project_id>\d+)',views.delete,name='delete'),
