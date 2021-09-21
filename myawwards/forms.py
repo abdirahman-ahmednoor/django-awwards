@@ -1,41 +1,33 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Post, Profile, Rating
-from pyuploadcare.dj.forms import ImageField
+from .models import Project,Profile,Rate
+    
+class Registration(UserCreationForm):
+  email = forms.EmailField()
 
+  class Meta:
+    model = User
+    fields = ['username','email','password1','password2']
 
-class SignupForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+class PostProjectForm(forms.ModelForm):
 
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')
+  class Meta:
+    model = Project
+    fields = ('title','description','project_image','repo_link','live_link', 'technologies_used')
 
+class UpdateProfile(forms.ModelForm):
+  class Meta:
+    model = Profile
+    fields = ['profile_picture','bio','phone','address']
 
-class PostForm(forms.ModelForm):
-    photo = ImageField(label='')
-
-    class Meta:
-        model = Post
-        fields = ('photo', 'title', 'url', 'description', 'technologies',)
-
-
-class UpdateUserForm(forms.ModelForm):
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-
-    class Meta:
-        model = User
-        fields = ('username', 'email')
-
-
-class UpdateUserProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['name', 'location', 'profile_picture', 'bio', 'contact']
-
+class UpdateUser(forms.ModelForm):
+  email = forms.EmailField()
+  class Meta:
+    model = User
+    fields = ['username','email']
 
 class RatingsForm(forms.ModelForm):
     class Meta:
-        model = Rating
-        fields = ['design', 'usability', 'content']
+        model = Rate
+        fields = ['design_wise', 'usability_wise', 'content_wise']
