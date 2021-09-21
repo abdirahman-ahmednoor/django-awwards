@@ -40,7 +40,7 @@ def register(request):
       return redirect('login')
   else:
     form = Registration()
-  return render(request,'registration/registration_form.html',{"form":form})
+  return render(request,'django_registration/registration_form.html',{"form":form})
 
 def login(request):
   if request.method == 'POST':
@@ -52,13 +52,13 @@ def login(request):
       if user is not None:
         auth_login(request, user)
         messages.info(request, f"You are now logged in as {username}")
-        return redirect('home')
+        return redirect('index')
       else:
         messages.error(request, "Invalid username or password.")
     else:
       messages.error(request, "Invalid username or password.")
   form = AuthenticationForm()
-  return render(request = request,template_name = "registration/login.html",context={"form":form})
+  return render(request = request,template_name = "django_registration/login.html",context={"form":form})
 
 @login_required
 def profile(request):
