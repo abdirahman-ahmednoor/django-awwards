@@ -44,6 +44,8 @@ To access this project on your local files, you can clone it using these steps:
 5. django-registration
 6. python-decouple
 7. Python Venv
+8. Whitenoise
+9. Gunicorn
 
 ## TECHNOLOGIES USED
 
